@@ -24,6 +24,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="company">Bedrijf</label>
+                    {!! Form::select('company_id', $companies,
+                     $contact->company_id, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
                     <label for="last_name">Achternaam:</label>
                     <input type="text" class="form-control" name="last_name" value="{{ $contact->last_name }}" />
                 </div>

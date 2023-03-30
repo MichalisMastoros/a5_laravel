@@ -10,6 +10,17 @@ class Contact extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name', 'last_name','email','city','country','job_title'
-        ];
+        'first_name',
+        'last_name',
+        'company_id',
+        'email',
+        'city',
+        'country',
+        'job_title'
+    ];
+
+    public function Company() 
+    {
+        return $this->belongsTo('App\Mpdels\Company','company_id');
+    }
 }

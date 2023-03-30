@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contacts.create');
+        $companies = Company::pluck('name','id');
+        return view('contacts.create',compact('companies'));
     }
 
     /**
@@ -32,7 +34,8 @@ class ContactController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'company_id' => 'required'
         ]);
 
         Contact::create($request->all());
@@ -52,7 +55,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return view('contacts.edit', compact('contact'));
+        $companies = Company::pluck('name','id');
+        return view('contacts.edit', compact('contact','companies'));
     }
 
     /**
@@ -63,7 +67,8 @@ class ContactController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'company_id' => 'required'
         ]);
 
         $contact->update($request->all());

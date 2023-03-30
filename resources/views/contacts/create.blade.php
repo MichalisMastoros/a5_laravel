@@ -27,6 +27,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="company">Bedrijf</label>
+                        {!! Form::select('company_id', $companies, null,
+                        ['placeholder' => 'Kies een bedrijf...',
+                        'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="text" class="form-control" name="email" />
                     </div>
