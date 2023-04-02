@@ -35,7 +35,7 @@ class ContactController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
-            'company_id' => 'required'
+            'company_id' => 'required'  
         ]);
 
         Contact::create($request->all());

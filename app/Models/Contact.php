@@ -19,8 +19,14 @@ class Contact extends Model
         'job_title'
     ];
 
-    public function Company() 
+    public function Company()
     {
-        return $this->belongsTo('App\Mpdels\Company','company_id');
+        return $this->belongsTo('App\Models\Company', 'company_id');
+    }
+
+    public static function contactSearch($name)
+    {
+        return Contact::where('first_name', 'LIKE', "%$name%")
+            ->orWhere('last_name', 'LIKE', "%$name%")->get();
     }
 }
