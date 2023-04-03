@@ -19,8 +19,7 @@ class ContactController extends Controller
         } else {
             $contacts = Contact::all();
         }
-
-        return view('contacts.index',compact('contacts'));
+        return view('contacts.index', compact('contacts'));
     }
 
     /**
@@ -28,8 +27,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $companies = Company::pluck('name','id');
-        return view('contacts.create',compact('companies'));
+        $companies = Company::pluck('name', 'id');
+        return view('contacts.create', compact('companies'));
     }
 
     /**
@@ -41,7 +40,7 @@ class ContactController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
-            'company_id' => 'required'  
+            'company_id' => 'required'
         ]);
 
         Contact::create($request->all());
@@ -61,8 +60,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        $companies = Company::pluck('name','id');
-        return view('contacts.edit', compact('contact','companies'));
+        $companies = Company::pluck('name', 'id');
+        return view('contacts.edit', compact('contact', 'companies'));
     }
 
     /**

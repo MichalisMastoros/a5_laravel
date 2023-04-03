@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Feature;    
+namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -10,6 +10,7 @@ class LoginTest extends TestCase
 {
 
     use RefreshDatabase;
+    
     public function testLoginView()
     {
         $response = $this->get(route('login'));
@@ -37,7 +38,7 @@ class LoginTest extends TestCase
         $response->assertRedirect(route('home'));
         $this->assertAuthenticatedAs($user);
     }
-
+    
     public function testWrongUser()
     {
         $user = User::factory()->create([
