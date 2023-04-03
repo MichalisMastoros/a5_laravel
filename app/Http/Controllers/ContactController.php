@@ -11,10 +11,16 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::all();
-        return view('contacts.index', compact('contacts'));
+        $keyword = $request->keyword;
+        if (isset($keyword)) {
+            $contacts = Contact::contactSearch($keyword);
+        } else {
+            $contacts = Contact::all();
+        }
+
+        return view('contacts.index',compact('contacts'));
     }
 
     /**

@@ -15,6 +15,21 @@
 </div>
 
 <div class="row">
+    {!! Form::open(['method' => 'GET','url' => '/contacts/',
+    'class' => 'navbar-form navbar-left','role'=>'search']) !!}
+    <div class="input-group custom-search-form">
+        <input type="text" name="keyword" placeholder="Zoek..." class="form-control">
+        <span class="input-group-btn">
+            <button class="btn btn-default-sm" type="submit">
+                <i class="fa fa-search"> <span class="glypicon glyphicon-search" />
+            </button>
+        </span>
+    </div>
+    {!! Form::close() !!}
+</div>
+
+
+<div class="row">
     <div class="col-sm-12">
         <h1 class="display-3">Contacten</h1>
         <table class="table table-striped">
